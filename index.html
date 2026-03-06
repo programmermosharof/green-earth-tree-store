@@ -136,12 +136,31 @@
 </div>
 
     <!-- Right Site  Your Cart-->
-    <div class="card card-body shadow-2xl col-span-3 gap-6">
-      
+<div class="col-span-3 card card-body shadow-2xl"> 
+    <div class=" sticky top-8">
+       <h2 class="font-bold text-3xl mb-2"><i class="fa-solid fa-cart-plus"></i> Your Cart</h2>
 
-      
+       <!-- pay Cart details -->
+      <div class="space-y-4">
+        <div id="cartContainer" class="space-y-4">
+       
+        </div>
+      </div>
+    <div id="emptyCartMessage" class="text-center py-4">
+      <p>Your cart is empty</p>
+      <p>Add trees to get started</p>
     </div>
+
+      <!-- Total amount -->
+       <div class="flex justify-between items-center bg-green-100 rounded-lg my-3 font-bold p-4">
+        <span>Total:</span>
+        <span id="totalPrice">$0</span>
+       </div>
+
+       
   </div>
+</div>
+</div>
 
 <!-- Product details modal -->
 <dialog id="tree-details-modal" class="modal">

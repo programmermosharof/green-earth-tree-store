@@ -9,6 +9,10 @@ const modalCategory = document.getElementById("modalCategory");
 const modalDescription = document.getElementById("modalDescription");
 const modalPrice = document.getElementById("modalPrice");
 const modalTitle = document.getElementById("modalTitle");
+const cartContainer = document.getElementById("cartContainer")
+const totalPrice = document.getElementById('totalPrice');
+const emptyCartMessage = document.getElementById("emptyCartMessage");
+let cart = [];
 // hidden and show Function
 const showLoading = () => {
     loadingSpinner.classList.remove('hidden');
@@ -120,7 +124,7 @@ card.innerHTML = `
           <h2 class="font-bold text-xl ">$${tree.price}</h2>
         </div>
         <div class="card-actions justify-end">
-          <button class="btn font-medium text-white bg-[#15803d] btn-block rounded-full">Add to Cart</button>
+          <button class="btn font-medium text-white bg-[#15803d] btn-block rounded-full" onclick="addToCart(${tree.id}, '${tree.name}', ${tree.price})">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -143,6 +147,68 @@ modalDescription.textContent = plantDetails.description;
 modalPrice.textContent = plantDetails.price;
 treeDetailsModal.showModal();
 
+
+}
+
+const addToCart = (id, name , price) => {
+    console.log(id, name, price, "Add To Cart");
+      const existingItem = cart.find((item) => item.id === id);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      id,
+      name,
+      price,
+      quantity: 1,
+    });
+  }
+    // cart.push({
+    //     id,
+    //     name,
+    //     price,
+    //     quantity: 1,
+    // })
+updateCart()
+}
+const updateCart = () =>{
+cartContainer.innerHTML = " ";
+if(cart.length === 0){
+emptyCartMessage.classList.remove("hidden")
+totalPrice.textContent = `${0}`
+return;
+}
+emptyCartMessage.classList.add("hidden")
+console.log(cart);
+let total = 0;
+cart.forEach (item => {
+    total += item.price * item.quantity;
+    const cartItem = document.createElement('div');
+    cartItem.classList = "";
+    cartItem.innerHTML = `
+     <div class="card card-body bg-slate-100">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2>${item.name}</h2>
+            <p>$${item.price} x ${item.quantity}</p>
+          </div>
+          <button class="btn btn-gost rounded-full" onclick="removeFromCart(${item.id})"><i class="fa-solid fa-circle-xmark"></i></button> 
+        </div>
+        <p class="text-right font-semibold text-xl">$${item.price * item.quantity}  </p>
+
+        </div>
+    `;
+    cartContainer.appendChild(cartItem)
+});
+totalPrice.innerText = `$${total}`;
+}
+
+const removeFromCart = (treeId) => {
+    console.log(treeId, 'id');
+    const updatedCartElement = cart.filter(item=> item.id != treeId);
+    cart = updatedCartElement;
+    updateCart()
 
 }
 // All Categories function call
