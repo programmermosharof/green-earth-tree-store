@@ -3,6 +3,12 @@ const categoriesContainer=document.getElementById('categories-container');
 const treesContainer = document.getElementById("treesContainer");
 const loadingSpinner = document.getElementById('loadingSpinner');
 const allTrees = document.getElementById('all-trees-btn')
+const treeDetailsModal = document.getElementById("tree-details-modal");
+const modalImage = document.getElementById("modalImage");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
+const modalPrice = document.getElementById("modalPrice");
+const modalTitle = document.getElementById("modalTitle");
 // hidden and show Function
 const showLoading = () => {
     loadingSpinner.classList.remove('hidden');
@@ -102,10 +108,11 @@ card.innerHTML = `
           src="${tree.image}"
           alt="${tree.name}"
          title="${tree.name}"
-         class="h-48 w-full obj" />
+         class="h-48 w-full object-cover"
+         onclick="openTreeModal(${tree.id})" />
       </figure>
       <div class="card-body">
-        <h2 class="card-title font-bold">${tree.name}</h2>
+        <h2 class="card-title font-bold cursor-pointer hover:text-[#4ade80]" onclick="openTreeModal(${tree.id})" >${tree.name}</h2>
         <p class="line-clamp-2">${tree.description}</p>
         
         <div class="flex justify-between items-center">
@@ -120,9 +127,22 @@ card.innerHTML = `
 
 `;
 // appendChild
-treesContainer.appendChild(card);
-   
+treesContainer.appendChild(card);  
 })
+}
+const openTreeModal = async (treeID) =>{
+console.log(treeID, "treeID");
+const res = await fetch(`https://openapi.programming-hero.com/api/plant/${treeID}`);
+const data = await res.json();
+const plantDetails = data.plants;
+console.log(plantDetails, "data");
+modalTitle.textContent = plantDetails.name;
+modalImage.src = plantDetails.image;
+modalCategory.textContent = plantDetails.category;
+modalDescription.textContent = plantDetails.description;
+modalPrice.textContent = plantDetails.price;
+treeDetailsModal.showModal();
+
 
 }
 // All Categories function call
