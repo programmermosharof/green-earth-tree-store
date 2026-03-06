@@ -55,9 +55,7 @@
     <a class="btn btn-warning text-[#15803d] rounded-full ">Plant a Tree</a>
   </div>
 </div>
-</header>
 
-<main class="" >
     <!-- Hero Section -->
 <section class=" bg-[#CFF0DC] ">
     <div class=" flex justify-between items-center  ">
@@ -66,7 +64,7 @@
            <img class="hidden md:block" src="assets/hero-leaf1.png" alt="">
         </div>
         <!-- center -->
-        <div class="text-center space-y-4 py-6  ">
+        <div class="text-center space-y-4 p-15  ">
             <h1 class="font-bold text-4xl text-[#1f2937]">Plant a Tree, Grow a Future</h1>
             <p>Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
 
@@ -81,6 +79,63 @@
     </div>
 </section>
        
+</header>
+
+<main class=" bg-[#f0fdf4]" >
+   <!-- Choose Your Trees Section  -->
+<section class=" w-11/12 mx-auto" >
+    <!-- section Title -->
+      <h2 class="font-bold text-4xl text-center  text-[#1f2937] p-16">Choose Your Trees</h2>
+      <!-- bg-[#15803d]  -->
+  <div class=" grid grid-cols-12 gap-8  ">
+    <!-- Left Site Categories-->
+    <div class=" col-span-3 space-y-4 card card-body shadow-2xl">
+      <h2 class="font-bold text-2xl">Categories</h2>
+      <div>
+        <button id="all-trees-btn" class="btn btn-success w-full">All Trees</button>
+      </div>
+      <div id="categories-container" class="space-y-4">
+        <!-- Categories add by JavaScript -->
+
+      </div>
+          
+    </div>
+    <!-- Center Trees -->
+<div class="bg-slate-500 col-span-6">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <!-- Categories card will be dynamically loaded here by JS -->
+    <div class="card bg-base-100  shadow-sm">
+      <figure>
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          alt="Shoes" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">Card Title</h2>
+        <p class="line-clamp-2">A card component has a figure, a body part, and inside body there are title and actions parts</p>
+        <div class="flex justify-between items-center">
+          <div class="badge outline font-medium bg-[#CFF0DC] text-[#15803d]">Success</div>
+          <h2 class="font-bold text-xl ">$500</h2>
+        </div>
+        <div class="card-actions justify-end">
+          <button class="btn font-medium text-white bg-[#15803d] btn-block rounded-full">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+
+  
+</div>
+</div>
+    <!-- Right Site  Your Cart-->
+    <div class="card card-body shadow-2xl col-span-3 gap-6">
+      
+
+      
+    </div>
+  </div>
+</section>
+
 
 </main>
     <script src="JavaScript/index.js"></script>
