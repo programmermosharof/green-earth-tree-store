@@ -2,8 +2,8 @@
 const categoriesContainer=document.getElementById('categories-container');
 const treesContainer = document.getElementById("treesContainer");
 const loadingSpinner = document.getElementById('loadingSpinner');
+const allTrees = document.getElementById('all-trees-btn')
 // hidden and show Function
-
 const showLoading = () => {
     loadingSpinner.classList.remove('hidden');
     loadingSpinner.classList.add('flex');
@@ -60,6 +60,19 @@ const selectCategories = async (categoryId, btn) => {
   hideLoading()
 }
 
+allTrees.addEventListener('click', () => {
+
+    
+  const allButtons = document.querySelectorAll('#categories-container button , #all-trees-btn' )
+//   console.log(allButtons);
+  allButtons.forEach(btn => {
+    btn.classList.remove('btn-primary');
+    btn.classList.add('btn-outline')
+  }) 
+   allTrees.classList.add('btn-primary')
+  allTrees.classList.remove('btn-outline');
+loadTrees()
+})
 
 // 2. Get 🌴 All Plants
 
